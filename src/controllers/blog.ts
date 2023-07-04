@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import httpStatusCode from "../constants/httpStatusCode";
 import Blog from "../models/blog";
+import queryBuilder from "../utils/queryBuilder";
 
 export const createBlog = async (req: Request, res: Response) => {
   try {
@@ -26,9 +27,28 @@ export const createBlog = async (req: Request, res: Response) => {
   }
 };
 
-export const getBlogs = async (_req: Request, res: Response) => {
+export const getBlogs = async (req: Request, res: Response) => {
   try {
-    const blogs = await Blog.query().where({ is_deleted: false });
+    const { query }: { query: ReqQuery } = req;
+
+    const {
+      sort_by = "created_at",
+      sort_order = "asc",
+      search,
+      search_field,
+    } = query;
+
+    const getBlogsQuery = Blog.query().where({ is_deleted: false });
+
+    const newQuery = queryBuilder({
+      query: getBlogsQuery,
+      search: search,
+      search_field: search_field,
+      sort_by: sort_by,
+      sort_order: sort_order,
+    });
+
+    const blogs = await newQuery.select();
 
     return res
       .status(httpStatusCode.SUCCESS)

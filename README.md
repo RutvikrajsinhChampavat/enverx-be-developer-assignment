@@ -1,52 +1,74 @@
-[![N|Solid](https://iili.io/Hi9giog.png)](https://www.enverx.com/)
+# Enverx Backend Developer Assignment
 
-EnverX offers a simple and convenient platform to fund early-stage projects
-and trade future carbon credits.
+This repository contains the solution for the Enverx Backend Developer Assignment. It implements a Node.js application that provides an API for managing users and their tasks.
 
-## _Assginment For Backend Developer Role_
+## Getting Started
 
-### Instructions
-``` diff
-- Fork this repository
-- Take a fresh `pull`
-- Create a `development` branch
-- `Push` the updated code after task completion
-Note: Make sure to add proper `commit` messages
-```
+### Prerequisites
 
-### Task Requirements
-1. Create a RESTful API for a simple blog application.
-2. Use Node.js and Express.js as the backend framework.
-3. Implement CRUD (Create, Read, Update, Delete) operations for blog posts.
-4. Store the blog posts in a dB
-5. Include validation for the API endpoints to ensure data integrity.
-6. Implement error handling and return appropriate HTTP status codes.
-7. Use Git for version control and host the project on GitHub.
-8. Write clear and concise documentation on how to set up and use the API.
-9. Use Typescript to get a Bonus point.
+To run this project locally, ensure that you have the following installed:
 
-### Functional Requirements
-1. Set up a new Node.js project and initialize it with a package.json file.
-2. Create the necessary Express.js routes and controllers for CRUD operations on blog posts.
+- Node.js (version 12 or higher)
+- npm (Node Package Manager)
 
-- `GET /posts` - Get all blog posts (Mandatory: Apply sorting based on created Date, blog name and filters based on category).
+### Project Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/RutvikrajsinhChampavat/enverx-be-developer-assignment.git
+   ```
+
+2. Navigate to the project directory:
+   cd enverx-be-developer-assignment
+
+3. Install the dependencies:
+   npm install
+
+4. Create a database schema. Create .env file and declare below given variables in it.
+
+   - DB_HOST
+   - DB_PORT
+   - DB_USER
+   - DB_PASSWORD
+   - DB_NAME
+   - SERVER_PORT
+
+5. After the database schema is created and the variable are set in .env run below command.
+
+   - npx knex migrate:latest
+
+   This will create blogs table in given database schema.
+
+6. After the migration has run successfully, run below command.
+
+   - npx knex seed:run
+
+   This command will populate dummy data in the database.
+
+7. To start node server run command as below:
+
+   - npm run dev
+
+   The server will start running on provided PORT in .env file.
+
+### API ENDPOINTS
+
+- `GET /posts` - Get all blog posts.
+  - params:
+    - sort_by (blog_id, title, description, category, created_at, updated_at)
+    - sort_order (asc, desc, ASC, DESC)
+    - search_field (blog_id, title, description, category)
+    - search
 - `GET /posts/:id` - Get a specific blog post by ID.
 - `POST /posts` - Create a new blog post.
+  - body
+    - title (requried, string, minimum lenth: 2)
+    - category (requried, string, minimum lenth: 2)
+    - description (requried, string, minimum lenth: 5)
 - `PUT /posts/:id` - Update an existing blog post.
+  - body
+  - title (requried, string, minimum lenth: 2)
+  - category (requried, string, minimum lenth: 2)
+  - description (requried, string, minimum lenth: 5)
 - `DELETE /posts/:id` - Delete a blog post.
-
-3. Implement validation for the API endpoints to ensure the data is correct and complete.
-4. Handle errors gracefully and return appropriate HTTP status codes (e.g., 404 for not found, 500 for server errors, etc.).
-5. Test the API endpoints using a tool like Postman or cURL.
-6. Write a README.md file with instructions on setting up the project, running it, and using the API.
-7. Initialize a Git repository, commit your code regularly, and push it to GitHub.
-8. Optionally, include any additional features or improvements you think would enhance the API.
-
-### Timeline
-The estimated time to complete this assignment is 6-7 hours, but it may vary based on your familiarity and experience with the technologies.
-
-### To Be Considered
-1. The submitted code should be plagiarism free otherwise your application will be disqualified
-2. Please complete the assignment and submit it to us by the submission deadline assigned to you. 
-3. follow the instructions carefully, as we will evaluate your code, documentation, and adherence to best practices. Once you have finished, please send us the GitHub repository link.
-4. If you have any questions or need further clarification, please don't hesitate to reach out to us at hr@enverx.com. We look forward to reviewing your work and discussing it with you in the next stage of the interview process.
