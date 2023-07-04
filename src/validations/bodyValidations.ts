@@ -14,7 +14,7 @@ export const createBlogBodyValidation = (
   if (!title || !category || !description) {
     return res
       .status(httpStatusCode.BAD_REQUEST)
-      .json({ message: "Please provide all the required filed!" });
+      .json({ message: "Please provide all the required field!" });
   }
 
   if (typeof title !== "string") {
@@ -68,7 +68,7 @@ export const updateBlogBodyValidation = (
   if (!title || !category || !description) {
     return res
       .status(httpStatusCode.BAD_REQUEST)
-      .json({ message: "Please provide all the required filed!" });
+      .json({ message: "Please provide all the required field!" });
   }
 
   if (typeof title !== "string") {

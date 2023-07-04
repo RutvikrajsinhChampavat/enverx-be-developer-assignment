@@ -21,11 +21,11 @@ export const createBlog = async (req: Request, res: Response) => {
 
     return res
       .status(httpStatusCode.CREATED)
-      .json({ message: "Blogs created successfully!", data: blog });
+      .json({ message: "Blog created successfully!", data: blog });
   } catch (error) {
     return res
       .status(error.code || httpStatusCode.SERVER_ERROR)
-      .json({ error: error.message });
+      .json({ error: "Something went wrong!" });
   }
 };
 
@@ -58,7 +58,7 @@ export const getBlogs = async (req: Request, res: Response) => {
   } catch (error) {
     return res
       .status(error.code || httpStatusCode.SERVER_ERROR)
-      .json({ error: error.message });
+      .json({ error: "Something went wrong!" });
   }
 };
 
@@ -76,7 +76,7 @@ export const getBlogByID = async (req: Request, res: Response) => {
   } catch (error) {
     return res
       .status(error.code || httpStatusCode.SERVER_ERROR)
-      .json({ error: error.message });
+      .json({ error: "Something went wrong!" });
   }
 };
 
@@ -105,7 +105,7 @@ export const updateBlog = async (req: Request, res: Response) => {
   } catch (error) {
     return res
       .status(error.code || httpStatusCode.SERVER_ERROR)
-      .json({ error: error.message });
+      .json({ error: "Something went wrong!" });
   }
 };
 
@@ -132,6 +132,6 @@ export const deleteBlog = async (req: Request, res: Response) => {
   } catch (error) {
     return res
       .status(error.code || httpStatusCode.SERVER_ERROR)
-      .json({ error: error.message });
+      .json({ error: "Something went wrong!" });
   }
 };
