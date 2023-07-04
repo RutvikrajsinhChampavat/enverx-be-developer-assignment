@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatusCode from "../constants/httpStatusCode";
+import { CREATE_BLOG_BODY } from "../types/bodyTypes";
 
 export const createBlogBodyValidation = (
   req: Request,

@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import httpStatusCode from "../constants/httpStatusCode";
 import Blog from "../models/blog";
 import queryBuilder from "../utils/queryBuilder";
+import { CREATE_BLOG_BODY, UPDATE_BLOG_BODY } from "../types/bodyTypes";
+import { ReqQuery, RequestParams } from "../types/extendedTypes";
 
 export const createBlog = async (req: Request, res: Response) => {
   try {

@@ -1,8 +1,10 @@
-interface RequestParams extends ParamsDictionary {
+import { ColumnRef, OrderByDirection } from "objection";
+
+export interface RequestParams {
   id?: number;
 }
 
-interface ReqQuery extends QueryString.ParsedQs {
+export interface ReqQuery {
   page?: string;
   per_page?: string;
   sort_by?: ColumnRef;
