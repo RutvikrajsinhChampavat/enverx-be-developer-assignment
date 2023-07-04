@@ -25,7 +25,7 @@ To run this project locally, ensure that you have the following installed:
 3. Install the dependencies:
    npm install
 
-4. Create a database schema. Create .env file and declare below given variables in it.
+4. Create a mysql database schema. Create .env file and declare below given variables in it.
 
    - DB_HOST
    - DB_PORT

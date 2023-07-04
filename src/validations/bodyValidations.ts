@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatusCode from "../constants/httpStatusCode";
+import { CREATE_BLOG_BODY } from "../types/bodyTypes";
 
 export const createBlogBodyValidation = (
   req: Request,
@@ -13,7 +14,7 @@ export const createBlogBodyValidation = (
   if (!title || !category || !description) {
     return res
       .status(httpStatusCode.BAD_REQUEST)
-      .json({ message: "Please provide all the required filed!" });
+      .json({ message: "Please provide all the required field!" });
   }
 
   if (typeof title !== "string") {
@@ -67,7 +68,7 @@ export const updateBlogBodyValidation = (
   if (!title || !category || !description) {
     return res
       .status(httpStatusCode.BAD_REQUEST)
-      .json({ message: "Please provide all the required filed!" });
+      .json({ message: "Please provide all the required field!" });
   }
 
   if (typeof title !== "string") {
